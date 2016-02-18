@@ -1,0 +1,103 @@
+// header
+// -----------------------------------------
+//logo
+.logo-container
+	col(4)
+	display flex
+	vertical-align(middle)
+	justify(center)
+
+.logo-container img
+	max-width 100%
+	height auto
+	display block
+.logo-container h1
+	padding 20px
+.topo
+	position relative
+	width 100%
+	z-index 2
+	background url('../img/01.jpg') no-repeat center top
+	background-size cover
+	min-height 556px
+	border-top 10px solid #fc9700
+// //menu
+// .menu
+// 	col(9)
+// 	display flex
+// 	vertical-align(middle)
+// 	justify(right)
+//
+// .menu ul
+// 	list-style none
+// 	margin 0
+// 	padding 0
+//
+// .menu ul li
+// 	display inline-block
+// 	margin-left 1.5em
+//
+// .menu ul li a
+// 	text-decoration none
+// 	display inline-block
+// 	padding 10px
+// 	font-size 14px
+// 	font-weight 700
+// 	color #fff
+// 	transition background-color .3s, color .3s
+//
+// .menu ul li a:hover
+// 	// background-color cor-principal
+// 	color #000
+// a.entypo-facebook-circled:before
+// 	font-size 24px
+// a.entypo-facebook-circled:hover
+// 	color #3b5998 !important
+//
+// a.entypo-soundcloud:hover
+// 	color #ff5500 !important
+//
+// a.entypo-video:hover
+// 	color #bb0000 !important
+
+
+@media screen and (max-width 995px)
+
+	.menu ul li a
+		font-size 12px
+
+	.menu ul li
+		margin-left 0.7em
+
+@media screen and (max-width 810px)
+
+	.logo-container
+		col(12)
+	.menu
+		col(12)
+	.coluna2
+		col(12)
+	.menu ul
+		margin 0 auto
+		display block
+
+@media screen and (max-width 612px)
+	.menu ul li
+		col(6)
+		text-align center
+
+	.face
+		display none !important
+	.insta
+		display none !important
+	.video
+		display none !important
+
+	a.entypo-facebook-circled:before
+		display none
+
+	a.entypo-soundcloud:before
+		display none
+
+	a.entypo-video:before
+		display none

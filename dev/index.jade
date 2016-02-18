@@ -1,0 +1,65 @@
+doctype html
+html(lang="pt-br")
+
+	// head
+	// -----------------------------------------
+	head
+		// head requests
+		include ./includes/head-requests.jade
+		
+		// SEO
+		meta(name="keywords" content="")
+		meta(name="description" content="")
+		meta(name="robots" content="index,follow")
+		meta(name="copyright" content="Cássio Lemos © 2016 Todos Direitos Reservados")
+		meta(name="author" content="Cássio Lemos")
+		title Portfólio Web
+
+	body
+		// header
+		// -----------------------------------------
+		include ./includes/header.jade
+
+		// banner
+		// -----------------------------------------
+		//- include ./includes/banner.jade
+
+		// content
+		// -----------------------------------------
+		main.row
+
+			div.row
+				h1(id='fotos').titulo  | Projetos 
+				
+			div.row
+				div.photobox
+					a(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
+						img(src="assets/img/fotos/foto_01.jpg")
+						
+				div.photobox
+					a(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
+						img(src="assets/img/fotos/foto_01.jpg")
+						
+				div.photobox
+					a(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
+						img(src="assets/img/fotos/foto_01.jpg")
+						
+				div.photobox
+					a(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
+						img(src="assets/img/fotos/foto_01.jpg")
+						
+				div.photobox
+					aa(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
+						img(src="assets/img/fotos/foto_01.jpg")
+						
+				div.photobox
+					aa(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
+						img(src="assets/img/fotos/foto_01.jpg")
+		
+		// footer
+		// -----------------------------------------
+		include ./includes/footer.jade
+
+		// bottom requests
+		// -----------------------------------------
+		include ./includes/bottom-requests.jade
