@@ -43,7 +43,8 @@ module.exports = function( grunt ) {
       //compile for production
       compile: {
         files: {
-					"prod/index.html": ["dev/index.jade"]
+					"prod/index.html": ["dev/index.jade"],
+          "prod/sobre.html": ["dev/sobre.jade"]
 				}
       }
     },

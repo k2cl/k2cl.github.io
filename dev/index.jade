@@ -18,7 +18,7 @@ html(lang="pt-br")
 	body
 		// header
 		// -----------------------------------------
-		include ./includes/header.jade
+		include ./includes/header_index.jade
 
 		// banner
 		// -----------------------------------------
@@ -27,35 +27,36 @@ html(lang="pt-br")
 		// content
 		// -----------------------------------------
 		main.row
-
-			div.row
-				h1(id='fotos').titulo  | Projetos 
 				
 			div.row
-				div.photobox
-					a(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
-						img(src="assets/img/fotos/foto_01.jpg")
+				
+				h1(style="color: #000; display: inline-block; margin-bottom: -20px; width: 100%; font-weight: 300;") Hi. I am Cássio Lemos
+					
+				aside(class="profile-card")
+				
+					header(id="header-profile")
+						a(href="http://www.cassiolemos.com.br" target="blank")
+							img(src="https://media.licdn.com/media/AAEAAQAAAAAAAAYjAAAAJDgyZjAxZDRmLTk0MWItNDU3ZS05NzMyLWQ5ZDA1Yjg1NGMzYw.jpg")
+						h1 Cássio Lemos
+						h2 Front End Developer
+					div(class="profile-bio")
+						p Hello there!
+						p.desc I am a web developer, and a graphic designer. I mainly work with HTML, CSS, JS and WordPress.<br>I also play well with Photoshop, Illustrator, Preprocessors, Javascript, After Effects and Cinema 4D just for fun.
+					ul(class="profile-social-links")
+					
+						li
+							a(href="https://br.linkedin.com/in/clemos1" target="blank" class="hvr-grow")
+								img(src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-social-linkedin.svg" width="32" height="32")
+						li
+							a(href="https://www.github.io/k2cl" target="blank" class="hvr-grow")
+								img(src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-social-github.svg" width="32" height="32")
+							
+						li
+							a(href="https://www.facebook.com/k2cassiolemos" target="blank" class="hvr-grow")
+								img(src="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/svgs/fi-social-facebook.svg" width="32" height="32")
+							
+				h1(style="color: #000; display: inline-block; width: 100%; font-weight: 300;") Hover in picture to know me ;)	
 						
-				div.photobox
-					a(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
-						img(src="assets/img/fotos/foto_01.jpg")
-						
-				div.photobox
-					a(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
-						img(src="assets/img/fotos/foto_01.jpg")
-						
-				div.photobox
-					a(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
-						img(src="assets/img/fotos/foto_01.jpg")
-						
-				div.photobox
-					aa(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
-						img(src="assets/img/fotos/foto_01.jpg")
-						
-				div.photobox
-					aa(href="assets/img/fotos/foto_01.jpg" class='fresco' data-fresco-group='imagens' data-fresco-caption="")
-						img(src="assets/img/fotos/foto_01.jpg")
-		
 		// footer
 		// -----------------------------------------
 		include ./includes/footer.jade

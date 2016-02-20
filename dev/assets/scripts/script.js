@@ -1,143 +1,212 @@
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide"
+$( function()
+{
+    // ACTIVITY INDICATOR
+
+  var activityIndicatorOn = function()
+    {
+      $( '<div id="imagelightbox-loading"><div></div></div>' ).appendTo( 'body' );
+    },
+    activityIndicatorOff = function()
+    {
+      $( '#imagelightbox-loading' ).remove();
+    },
+
+
+    // OVERLAY
+
+    overlayOn = function()
+    {
+      $( '<div id="imagelightbox-overlay"></div>' ).appendTo( 'body' );
+    },
+    overlayOff = function()
+    {
+      $( '#imagelightbox-overlay' ).remove();
+    },
+
+
+    // CLOSE BUTTON
+
+    closeButtonOn = function( instance )
+    {
+      $( '<button type="button" id="imagelightbox-close" title="Close"></button>' ).appendTo( 'body' ).on( 'click touchend', function(){ $( this ).remove(); instance.quitImageLightbox(); return false; });
+    },
+    closeButtonOff = function()
+    {
+      $( '#imagelightbox-close' ).remove();
+    },
+
+
+    // CAPTION
+
+    captionOn = function()
+    {
+      var description = $( 'a[href="' + $( '#imagelightbox' ).attr( 'src' ) + '"] img' ).attr( 'alt' );
+      if( description.length > 0 )
+        $( '<div id="imagelightbox-caption">' + description + '</div>' ).appendTo( 'body' );
+    },
+    captionOff = function()
+    {
+      $( '#imagelightbox-caption' ).remove();
+    },
+
+
+    // NAVIGATION
+
+    navigationOn = function( instance, selector )
+    {
+      var images = $( selector );
+      if( images.length )
+      {
+        var nav = $( '<div id="imagelightbox-nav"></div>' );
+        for( var i = 0; i < images.length; i++ )
+          nav.append( '<button type="button"></button>' );
+
+        nav.appendTo( 'body' );
+        nav.on( 'click touchend', function(){ return false; });
+
+        var navItems = nav.find( 'button' );
+        navItems.on( 'click touchend', function()
+        {
+          var $this = $( this );
+          if( images.eq( $this.index() ).attr( 'href' ) != $( '#imagelightbox' ).attr( 'src' ) )
+            instance.switchImageLightbox( $this.index() );
+
+          navItems.removeClass( 'active' );
+          navItems.eq( $this.index() ).addClass( 'active' );
+
+          return false;
+        })
+        .on( 'touchend', function(){ return false; });
+      }
+    },
+    navigationUpdate = function( selector )
+    {
+      var items = $( '#imagelightbox-nav button' );
+      items.removeClass( 'active' );
+      items.eq( $( selector ).filter( '[href="' + $( '#imagelightbox' ).attr( 'src' ) + '"]' ).index( selector ) ).addClass( 'active' );
+    },
+    navigationOff = function()
+    {
+      $( '#imagelightbox-nav' ).remove();
+    },
+
+
+    // ARROWS
+
+    arrowsOn = function( instance, selector )
+    {
+      var $arrows = $( '<button type="button" class="imagelightbox-arrow imagelightbox-arrow-left"></button><button type="button" class="imagelightbox-arrow imagelightbox-arrow-right"></button>' );
+
+      $arrows.appendTo( 'body' );
+
+      $arrows.on( 'click touchend', function( e )
+      {
+        e.preventDefault();
+
+        var $this	= $( this ),
+          $target	= $( selector + '[href="' + $( '#imagelightbox' ).attr( 'src' ) + '"]' ),
+          index	= $target.index( selector );
+
+        if( $this.hasClass( 'imagelightbox-arrow-left' ) )
+        {
+          index = index - 1;
+          if( !$( selector ).eq( index ).length )
+            index = $( selector ).length;
+        }
+        else
+        {
+          index = index + 1;
+          if( !$( selector ).eq( index ).length )
+            index = 0;
+        }
+
+        instance.switchImageLightbox( index );
+        return false;
+      });
+    },
+    arrowsOff = function()
+    {
+      $( '.imagelightbox-arrow' ).remove();
+    };
+
+
+  //	WITH ACTIVITY INDICATION
+
+  $( 'a[data-imagelightbox="a"]' ).imageLightbox(
+  {
+    onLoadStart:	function() { activityIndicatorOn(); },
+    onLoadEnd:		function() { activityIndicatorOff(); },
+    onEnd:	 		function() { activityIndicatorOff(); }
   });
+
+
+  //	WITH OVERLAY & ACTIVITY INDICATION
+
+  $( 'a[data-imagelightbox="b"]' ).imageLightbox(
+  {
+    onStart: 	 function() { overlayOn(); },
+    onEnd:	 	 function() { overlayOff(); activityIndicatorOff(); },
+    onLoadStart: function() { activityIndicatorOn(); },
+    onLoadEnd:	 function() { activityIndicatorOff(); }
+  });
+
+
+  //	WITH "CLOSE" BUTTON & ACTIVITY INDICATION
+
+  var instanceC = $( 'a[data-imagelightbox="c"]' ).imageLightbox(
+  {
+    quitOnDocClick:	false,
+    onStart:		function() { closeButtonOn( instanceC ); },
+    onEnd:			function() { closeButtonOff(); activityIndicatorOff(); },
+    onLoadStart: 	function() { activityIndicatorOn(); },
+    onLoadEnd:	 	function() { activityIndicatorOff(); }
+  });
+
+
+  //	WITH CAPTION & ACTIVITY INDICATION
+
+  $( 'a[data-imagelightbox="d"]' ).imageLightbox(
+  {
+    onLoadStart: function() { captionOff(); activityIndicatorOn(); },
+    onLoadEnd:	 function() { captionOn(); activityIndicatorOff(); },
+    onEnd:		 function() { captionOff(); activityIndicatorOff(); }
+  });
+
+
+  //	WITH ARROWS & ACTIVITY INDICATION
+
+  var selectorG = 'a[data-imagelightbox="g"]';
+  var instanceG = $( selectorG ).imageLightbox(
+  {
+    quitOnDocClick:	false,
+    onStart:		function(){ arrowsOn( instanceG, selectorG ); overlayOn(); closeButtonOn( instanceG ); },
+    onEnd:			function(){ arrowsOff(); overlayOff(); closeButtonOff(); activityIndicatorOff(); },
+    onLoadStart: 	function(){ activityIndicatorOn(); },
+    onLoadEnd:	 	function(){ $( '.imagelightbox-arrow' ).css( 'display', 'block' ); activityIndicatorOff(); }
+  });
+
+
+  //	WITH NAVIGATION & ACTIVITY INDICATION
+
+  var selectorE = 'a[data-imagelightbox="e"]';
+  var instanceE = $( selectorE ).imageLightbox(
+  {
+    onStart:	 function() { navigationOn( instanceE, selectorE ); },
+    onEnd:		 function() { navigationOff(); activityIndicatorOff(); },
+    onLoadStart: function() { activityIndicatorOn(); },
+    onLoadEnd:	 function() { navigationUpdate( selectorE ); activityIndicatorOff(); }
+  });
+
+
+  //	ALL COMBINED
+
+  var selectorF = 'a[data-imagelightbox="f"]';
+  var instanceF = $( selectorF ).imageLightbox(
+  {
+    onStart:		function() { overlayOn(); closeButtonOn( instanceF ); arrowsOn( instanceF, selectorF ); },
+    onEnd:			function() { overlayOff(); captionOff(); closeButtonOff(); arrowsOff(); activityIndicatorOff(); },
+    onLoadStart: 	function() { captionOff(); activityIndicatorOn(); },
+    onLoadEnd:	 	function() { captionOn(); activityIndicatorOff(); $( '.imagelightbox-arrow' ).css( 'display', 'block' ); }
+  });
+
 });
-
-// $(function() {
-//     var header = $(".topo");
-//     $(window).scroll(function() {
-//         var scroll = $(window).scrollTop();
-//
-//         if (scroll >= 250) {
-//             header.removeClass('animated').addClass("f-nav animated fadeInDown");
-//         } else {
-//             header.removeClass("f-nav animated fadeInDown").addClass('animated');
-//         }
-//     });
-// });
-//
-// $(function() {
-//     var agenda = $(".col-agenda");
-//     $(window).scroll(function() {
-//         var scroll = $(window).scrollTop();
-//
-//         if (scroll >= 250) {
-//             header.removeClass('slow').addClass("f-nav animated fadeInDown");
-//         } else {
-//             header.removeClass("f-nav animated fadeInDown").addClass('animated slow fadeInDown');
-//         }
-//     });
-// });
-
-function ValidaForm() {
-
-  if (document.form1.nome.value == ""  ) {
-
-      window.alert("Campos * são Obrigatórios!");
-
-      document.form1.nome.focus();
-
-      return false;
-
-  }
-
-  if (document.form1.email.value == ""  ) {
-
-      window.alert("Campos * são Obrigatórios!");
-
-      document.form1.email.focus();
-
-      return false;
-
-  }
-
-  if (document.form1.fone.value == ""  ) {
-
-      window.alert("Campos * são Obrigatórios!");
-
-      document.form1.fone.focus();
-
-      return false;
-
-  }
-}
-
-// Smooth scroll for in page links - http://wibblystuff.blogspot.in/2014/04/in-page-smooth-scroll-using-css3.html
-// Improvements from - http://codepen.io/kayhadrin/pen/KbalA
-
-$(function() {
-	var $window = $(window), $document = $(document),
-		transitionSupported = typeof document.body.style.transitionProperty === "string", // detect CSS transition support
-		scrollTime = 1; // scroll time in seconds
-
-	$(document).on("click", "a[href*=#]:not([href=#])", function(e) {
-		var target, avail, scroll, deltaScroll;
-
-		if (location.pathname.replace(/^\//, "") == this.pathname.replace(/^\//, "") && location.hostname == this.hostname) {
-			target = $(this.hash);
-			target = target.length ? target : $("[id=" + this.hash.slice(1) + "]");
-
-			if (target.length) {
-				avail = $document.height() - $window.height();
-
-				if (avail > 0) {
-					scroll = target.offset().top;
-
-					if (scroll > avail) {
-						scroll = avail;
-					}
-				} else {
-					scroll = 0;
-				}
-
-				deltaScroll = $window.scrollTop() - scroll;
-
-				// if we don't have to scroll because we're already at the right scrolling level,
-				if (!deltaScroll) {
-					return; // do nothing
-				}
-
-				e.preventDefault();
-
-				if (transitionSupported) {
-					$("html").css({
-						"margin-top": deltaScroll + "px",
-						"transition": scrollTime + "s ease-in-out"
-					}).data("transitioning", scroll);
-				} else {
-					$("html, body").stop(true, true) // stop potential other jQuery animation (assuming we're the only one doing it)
-					.animate({
-						scrollTop: scroll + "px"
-					}, scrollTime * 50);
-
-					return;
-				}
-			}
-		}
-	});
-
-	if (transitionSupported) {
-		$("html").on("transitionend webkitTransitionEnd msTransitionEnd oTransitionEnd", function(e) {
-			var $this = $(this),
-				scroll = $this.data("transitioning");
-
-			if (e.target === e.currentTarget && scroll) {
-				$this.removeAttr("style").removeData("transitioning");
-
-				$("html, body").scrollTop(scroll);
-			}
-		});
-	}
-});
-
-
-
-
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.4";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
