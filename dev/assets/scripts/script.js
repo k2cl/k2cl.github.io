@@ -210,3 +210,13 @@ $( function()
   });
 
 });
+
+
+$(document).ready(function(){
+  // Sorry about bad spacing. Also...this is jquery if you didn't notice allready.
+  $(".profile-card").click(function(){
+    //On Hover - Works on ios
+    $("aside").show();
+
+ })
+});
