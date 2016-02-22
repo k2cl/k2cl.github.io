@@ -71,7 +71,7 @@ aside {
 	transition: all ease 0.3s;
 }
 
-aside:hover {
+aside.open {
 	border-top: 4px solid #fc9700;
 	border-bottom: 4px solid #fc9700;
 	border-radius: 5px;
@@ -81,27 +81,27 @@ aside:hover {
 	box-shadow: 0 0 70px 10px #fff;
 }
 
-aside:focus {
-	border-top: 4px solid #fc9700;
-	border-bottom: 4px solid #fc9700;
-	border-radius: 5px;
-	height: 610px;
-	width: 350px;
+// aside:focus {
+// 	border-top: 4px solid #fc9700;
+// 	border-bottom: 4px solid #fc9700;
+// 	border-radius: 5px;
+// 	height: 610px;
+// 	width: 350px;
+//
+// 	box-shadow: 0 0 70px 10px #fff;
+// }
 
-	box-shadow: 0 0 70px 10px #fff;
-}
 
 
-
-aside:hover #header-profile img {
+aside.open #header-profile img {
 	animation: profile_image 2000ms linear both;
 	animation-delay: 0.5s;
 }
 
-aside:focus #header-profile img {
-	animation: profile_image 2000ms linear both;
-	animation-delay: 0.5s;
-}
+// aside:focus #header-profile img {
+// 	animation: profile_image 2000ms linear both;
+// 	animation-delay: 0.5s;
+// }
 
 
 #header-profile {
@@ -122,19 +122,19 @@ aside:focus #header-profile img {
 	border-bottom: 1px solid #fff;
 }
 
-aside:hover #header-profile h1 {
+aside.open #header-profile h1 {
 	margin-top: 0px;
 	outline: 0 solid #fff;
 	border-top: 0px solid #fff;
 	border-bottom: 1px solid #fff;
 }
 
-aside:focus #header-profile h1 {
-	margin-top: 0px;
-	outline: 0 solid #fff;
-	border-top: 0px solid #fff;
-	border-bottom: 1px solid #fff;
-}
+// aside:focus #header-profile h1 {
+// 	margin-top: 0px;
+// 	outline: 0 solid #fff;
+// 	border-top: 0px solid #fff;
+// 	border-bottom: 1px solid #fff;
+// }
 
 #header-profile h2 {
 	text-align: center;
@@ -156,11 +156,11 @@ aside:focus #header-profile h1 {
 	background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.42) 49%, rgba(0, 0, 0, 0.61) 100%);
 	}
 
-aside:hover .profile-bio {
+aside.open .profile-bio {
 	opacity: 1;
 }
 
-aside:focus .profile-bio {
+aside.open .profile-bio {
 	opacity: 1;
 }
 
@@ -178,15 +178,15 @@ aside:focus .profile-bio {
 	transition: all ease 0.5s;
 }
 
-aside:hover .profile-social-links {
+aside.open .profile-social-links {
 	margin-left: -25px;
 	opacity: 1;
 }
 
-aside:focus .profile-social-links {
-	margin-left: -25px;
-	opacity: 1;
-}
+// aside:focus .profile-social-links {
+// 	margin-left: -25px;
+// 	opacity: 1;
+// }
 
 .profile-social-links li img {
 	width: 30px;
@@ -278,15 +278,15 @@ aside:focus .profile-social-links {
 }
 /*NAME ANIMATE */
 
-aside:hover #header-profile h1 {
+aside.open #header-profile h1 {
 	animation: name_and_job 1500ms linear both;
 	animation-delay: 0.4s;
 	}
 
-aside:focus #header-profile h1 {
-	animation: name_and_job 1500ms linear both;
-	animation-delay: 0.4s;
-	}
+// aside:focus #header-profile h1 {
+// 	animation: name_and_job 1500ms linear both;
+// 	animation-delay: 0.4s;
+// 	}
 
 @keyframes name_and_job {
 	0% {
@@ -348,33 +348,33 @@ aside:focus #header-profile h1 {
 	}
 	}
 
-aside:hover ul li:first-child {
+aside.open ul li:first-child {
 	animation: social_animation 2000ms ease-in-out both;
 	animation-delay: 0.75s;
 }
 
-aside:hover ul li:nth-child(2) {
+aside.open ul li:nth-child(2) {
 	animation: social_animation 2000ms ease-in-out both;
 	animation-delay: 1s;
 }
 
-aside:hover ul li:nth-child(3) {
+aside.open ul li:nth-child(3) {
 	animation: social_animation 2000ms ease-in-out both;
 	animation-delay: 1.25s;
 }
 
 
-aside:focus ul li:first-child {
-	animation: social_animation 2000ms ease-in-out both;
-	animation-delay: 0.75s;
-}
+// aside:focus ul li:first-child {
+// 	animation: social_animation 2000ms ease-in-out both;
+// 	animation-delay: 0.75s;
+// }
+//
+// aside:focus ul li:nth-child(2) {
+// 	animation: social_animation 2000ms ease-in-out both;
+// 	animation-delay: 1s;
+// }
 
-aside:focus ul li:nth-child(2) {
-	animation: social_animation 2000ms ease-in-out both;
-	animation-delay: 1s;
-}
-
-aside:hover ul li:nth-child(3) {
+aside.open ul li:nth-child(3) {
 	animation: social_animation 2000ms ease-in-out both;
 	animation-delay: 1.25s;
 }

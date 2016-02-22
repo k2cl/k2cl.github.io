@@ -211,12 +211,12 @@ $( function()
 
 });
 
-
 $(document).ready(function(){
-  // Sorry about bad spacing. Also...this is jquery if you didn't notice allready.
-  $("clique").click(function(){
-    //On Hover - Works on ios
-    $("aside").show();
-    return false
- })
+  $('#clique').on('click', function(){
+      $('aside .profile-card').removeClass('profile-card');
+      $(this).toggleClass('open');
+
+  });
+
+
 });
