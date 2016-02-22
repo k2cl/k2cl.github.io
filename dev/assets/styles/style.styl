@@ -374,7 +374,7 @@ aside:focus ul li:nth-child(2) {
 	animation-delay: 1s;
 }
 
-aside:focus ul li:nth-child(3) {
+aside:hover ul li:nth-child(3) {
 	animation: social_animation 2000ms ease-in-out both;
 	animation-delay: 1.25s;
 }
@@ -480,6 +480,7 @@ aside:focus ul li:nth-child(3) {
 .coluna2 p
 	col(8)
 	color #fff
+
 	margin 0 auto
 	display block
 	text-align center
@@ -745,15 +746,20 @@ h1 span
 	width: 2.5em; /* 40 */
 	height: 2.5em; /* 40 */
 	text-align: left;
-	background-color: #666;
+	background-color: #6C7A89
+	background-color: rgba( 108, 122, 137, .5 );
 	border-radius: 50%;
+	-webkit-transition: all .5s ease-in-out
+	-moz-transition: all .5s ease-in-out
+	-ms-transition: all .5s ease-in-out
+	-o-transition: all .5s ease-in-out
+	transition: all .5s ease-in-out
+	border none
 	position: fixed;
 	z-index: 10002;
 	top: 2.5em; /* 40 */
 	right: 2.5em; /* 40 */
 
-	-webkit-transition: color .3s ease;
-	transition: color .3s ease;
 }
 #imagelightbox-close:hover,
 #imagelightbox-close:focus
@@ -763,7 +769,7 @@ h1 span
 #imagelightbox-close:before,
 #imagelightbox-close:after
 {
-	width: 2px;
+	width: 3px;
 	background-color: #fff;
 	content: '';
 	position: absolute;
@@ -810,6 +816,7 @@ h1 span
 	background-color: rgba( 0, 0, 0, .5 );
 	border-radius: 20px;
 	position: fixed;
+	border none
 	z-index: 10001;
 	left: 50%;
 	bottom: 3.75em; /* 60 */
@@ -840,14 +847,23 @@ h1 span
 .imagelightbox-arrow
 {
 	width: 3.75em; /* 60 */
-	height: 7.5em; /* 120 */
-	background-color: #444;
-	background-color: rgba( 0, 0, 0, .5 );
+	height: 3.75em; /* 120 */
+	background-color: #6C7A89
+	background-color: rgba( 108, 122, 137, .5 );
 	vertical-align: middle;
+	border none
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
 	display: none;
 	position: fixed;
 	z-index: 10001;
 	top: 50%;
+	-webkit-transition: all .5s ease-in-out
+	-moz-transition: all .5s ease-in-out
+	-ms-transition: all .5s ease-in-out
+	-o-transition: all .5s ease-in-out
+	transition: all .5s ease-in-out
 	margin-top: -3.75em; /* 60 */
 }
 .imagelightbox-arrow:hover,

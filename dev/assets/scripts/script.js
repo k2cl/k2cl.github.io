@@ -217,6 +217,6 @@ $(document).ready(function(){
   $("clique").click(function(){
     //On Hover - Works on ios
     $("aside").show();
-
+    return false
  })
 });
