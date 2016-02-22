@@ -214,7 +214,7 @@ $( function()
 
 $(document).ready(function(){
   // Sorry about bad spacing. Also...this is jquery if you didn't notice allready.
-  $("aside").click(function(){
+  $("clique").click(function(){
     //On Hover - Works on ios
     $("aside").show();
 
